@@ -2,9 +2,10 @@
 #define ALGORITHM_HPP
 #include "graph/graph.hpp"
 
+using namespace std;
 
 /**
- * Execute Algorithm a* to search.
+ *  Algorithm a* to search.
  *  @param g graph with its root node.
  *  @param goal objective vector.
  *  @param weights precomputed weight matrix.

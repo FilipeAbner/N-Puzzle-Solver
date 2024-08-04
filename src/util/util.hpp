@@ -14,8 +14,6 @@ using namespace std;
  */
 vector<vector<int>> pre_computate_weight(int size, vector<int> &goal);
 
-
-
 /**
  * Check if puzzle has solution.
  * Basicaly checks if number of inversions for both inicial and goal state is odd or even, if true means puzzle can be solvable.
@@ -31,8 +29,6 @@ bool check_solvable(vector<int> &initial_state, vector<int> &goal_state);
  *  @return void
  */
 void print_pre_computate_weight(vector<vector<int>> &puzzle_weights);
-
-
 
 /**
  * Seach for a puzzle in a list.

@@ -2,6 +2,9 @@
 #define HEURISTIC_HPP
 #include <utility>
 #include <vector>
+
+using namespace std;
+
 /**
  * Calculate index of points in 2 dimensions and transform in 1 dimension. See Docs for reference.
  *  @see https://ennogames.com/blog/3d-and-2d-coordinates-to-1d-indexes.

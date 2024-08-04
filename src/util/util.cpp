@@ -3,10 +3,7 @@
 #include <iostream>
 #include <utility>
 
-
 using namespace std;
-
-
 
 vector<vector<int>> pre_computate_weight(int size, vector<int> &goal)
 {
@@ -58,7 +55,6 @@ bool check_solvable(vector<int> &initial_state, vector<int> &goal_state)
 
   return false;
 }
-
 
 int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list)
 {

@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "algorithm/heuristic.hpp"
 #include "algorithm/sucessors.hpp"
+
 using namespace std;
 
 int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights)
