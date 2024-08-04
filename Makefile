@@ -17,7 +17,8 @@ SRC = $(SRCDIR)/main.cpp \
       $(GRAPHDIR)/graph.cpp \
       $(GRAPHDIR)/node.cpp \
       $(UTILDIR)/util.cpp \
-      $(ALGORITHMDIR)/sucessors.cpp
+      $(ALGORITHMDIR)/sucessors.cpp \
+      $(ALGORITHMDIR)/ida_star.cpp
 
 # Arquivos Objeto
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)

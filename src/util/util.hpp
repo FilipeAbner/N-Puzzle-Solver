@@ -1,7 +1,8 @@
 #pragma once
 #define UTIL_HPP
 #include <vector>
-
+#include "algorithm/heuristic.hpp"
+#include "graph/graph.hpp"
 
 using namespace std;
 
@@ -30,3 +31,14 @@ bool check_solvable(vector<int> &initial_state, vector<int> &goal_state);
  *  @return void
  */
 void print_pre_computate_weight(vector<vector<int>> &puzzle_weights);
+
+
+
+/**
+ * Seach for a puzzle in a list.
+ *  @param graph graph with all puzzles
+ *  @param idx_neighbor index of puzzle in graph to be searched .
+ *  @param list list of puzzles.
+ *  @return if find the puzzle in list return index of puzzle in graph else return -1.
+ */
+int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list);

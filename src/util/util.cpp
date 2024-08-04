@@ -2,7 +2,6 @@
 #include <cmath>
 #include <iostream>
 #include <utility>
-#include "algorithm/heuristic.hpp"
 
 
 using namespace std;
@@ -60,3 +59,18 @@ bool check_solvable(vector<int> &initial_state, vector<int> &goal_state)
   return false;
 }
 
+
+int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list)
+{
+    vector<int> neighboor_puzzle = graph.get_node(idx_neighbor).puzzle;
+
+    for (int i = 0; i < list.size(); i++)
+    {
+        if (neighboor_puzzle == graph.get_node(list[i]).puzzle)
+        {
+            return list[i];
+        }
+    }
+
+    return -1;
+}

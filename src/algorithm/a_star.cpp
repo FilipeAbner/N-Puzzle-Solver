@@ -84,12 +84,12 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
             vector<Node> successors = get_successor(graph.nodes[cur_idx_node]);
 
             set_sucessors(graph, successors, cur_idx_node);
-            
+
             //  for (each neighbor of the current node):
             for (int &idx_neighboor : graph.neighboors[cur_idx_node])
             {
                 // check if the neighbor is in the closed list
-                int closed_list_idx = findPuzzle(graph, idx_neighboor, closed_list);
+                int closed_list_idx = find_puzzle(graph, idx_neighboor, closed_list);
                 if (closed_list_idx != -1)
                 {
                     continue;
@@ -102,7 +102,7 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
                     highest_g = new_g_cost;
 
                 // check if the neighbor is in the open list
-                int open_list_idx = findPuzzle(graph, idx_neighboor, open_list);
+                int open_list_idx = find_puzzle(graph, idx_neighboor, open_list);
 
                 // if the neighbor is not in the open list:
                 if (open_list_idx == -1)
@@ -128,18 +128,3 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
     }
 }
 
-
-int findPuzzle(Graph &graph, int idx_neighbor, vector<int> &list)
-{
-    vector<int> neighboor_puzzle = graph.get_node(idx_neighbor).puzzle;
-
-    for (int i = 0; i < list.size(); i++)
-    {
-        if (neighboor_puzzle == graph.get_node(list[i]).puzzle)
-        {
-            return list[i];
-        }
-    }
-
-    return -1;
-}
