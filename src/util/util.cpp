@@ -24,7 +24,7 @@ vector<vector<int>> pre_computate_weight(int size, vector<int> &goal)
         std::pair<int, int> dx_dy;
 
         dx_dy = manhattan_distance(i, goal[j], size);
-        // cout << dx_dy.first << " - " <<dx_dy.second << endl;
+
         int dx = dx_dy.first;
         int dy = dx_dy.second;
 

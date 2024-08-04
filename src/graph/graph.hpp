@@ -25,5 +25,3 @@ struct Graph
 
     ~Graph() {}
 };
-
-void print_path_weight(vector<int> &path);

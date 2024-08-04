@@ -5,19 +5,8 @@ using namespace std;
 
 void Node::calculate_h_weight(vector<vector<int>> weights, vector<int> goal)
 {
-    // int sum = 0;
-    // // vector<int> path(puzzle.size(), 0);
-
-    // for (int i = 0; i < puzzle.size(); i++)
-    // {
-    //     // path[i] = weights[puzzle[i]][i];
-    //     sum += weights[puzzle[i]][i];
-    // }
-
-    // h_weight = sum;
 
     int sum = 0;
-    // vector<int> path(puzzle.size(), 0);
     int idx_element_in_puzzle;
     int idx_element_in_goal;
 
@@ -35,7 +24,6 @@ void Node::calculate_h_weight(vector<vector<int>> weights, vector<int> goal)
             }
         }
         
-        // path[i] = weights[puzzle[i]][i];
         sum += weights[idx_element_in_goal][idx_element_in_puzzle];
     }
 

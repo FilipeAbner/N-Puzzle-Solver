@@ -3,28 +3,28 @@
 
 using namespace std;
 
-std::pair<int, int> calculate_indices_2d_to_1d(int indice, int puzzleSize)
+std::pair<int, int> calculate_indices_2d_to_1d(int indice, int puzzle_size)
 {
 
-  int rowSize = sqrt(puzzleSize);
-  int x = indice % rowSize;
-  int y = indice / rowSize;
+  int row_size = sqrt(puzzle_size);
+  int x = indice % row_size;
+  int y = indice / row_size;
 
   return std::make_pair(x, y);
 }
 
-std::pair<int, int> manhattan_distance(int indice_row, int indice_column, int puzzleSize)
+std::pair<int, int> manhattan_distance(int indice_row, int indice_column, int puzzle_size)
 {
 
   std::pair<int, int> dx_dy;
   std::pair<int, int> xy;
-  int rowSize = sqrt(puzzleSize);
+  int row_size = sqrt(puzzle_size);
 
-  xy = calculate_indices_2d_to_1d(indice_row, puzzleSize);
+  xy = calculate_indices_2d_to_1d(indice_row, puzzle_size);
   int x = xy.first;
   int y = xy.second;
 
-  xy = calculate_indices_2d_to_1d(indice_column, puzzleSize);
+  xy = calculate_indices_2d_to_1d(indice_column, puzzle_size);
   int goal_x = xy.first;
   int goal_y = xy.second;
 

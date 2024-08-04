@@ -44,7 +44,7 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
         int lowest_graph_index = 0;
         for (int i = 0; i < open_list.size(); i++)
         {
-            // Checagem feita Para melhorar a solução
+            // Check done to improve solution
             if (graph.get_node(open_list[i]).f_weight() == lowest_f)
             {
 
@@ -65,8 +65,6 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
         open_list.erase(open_list.begin() + lowest_f_idx);
         cur_idx_node = lowest_graph_index;
 
-        // cur_ix_node = open_list_nodes[0].index_in_graph;
-        // cout << "cur_ix_node: " << cur_ix_node << "\n";
 
         //  if (this node is our destination node) : //TODO: trocar a comparaçao do goal para h = 0?
         if (graph.get_node(cur_idx_node).puzzle == goal)
@@ -79,56 +77,53 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
         }
         else
         {
-            //   put the current node in the closed list and look at all of its neighbors
+            // put the current node in the closed list and look at all of its neighbors
             closed_list.push_back(cur_idx_node);
 
-            // identifica os sucessores adiciona ao grafo e cria aresta
+            // identifies successors adds to graph and creates edge
             vector<Node> successors = get_successor(graph.nodes[cur_idx_node]);
-
-            // TODO: ADICIONAR DEPOIS????
             for (auto &node : successors)
             {
-                // Adiciona o Nodo ao grafo
+                // Add the Node to the graph
                 graph.add_node(node);
-                // Adiciona aresta de q para node(Aresta do nodo atual gerado para o nodo gerador)
+                // Add edge from Q to node(Edge from current generated node to generator node)
                 graph.neighboors[cur_idx_node].push_back(graph.nodes.size() - 1);
             }
             //  for (each neighbor of the current node):
             for (int &idx_neighboor : graph.neighboors[cur_idx_node])
             {
+                // check if the neighbor is in the closed list
                 int closed_list_idx = findPuzzle(graph, idx_neighboor, closed_list);
                 if (closed_list_idx != -1)
                 {
                     continue;
                 }
 
+                //  increment g cost(basicaly the depth of the node) 
                 int new_g_cost = graph.nodes[cur_idx_node].g_weight + 1;
+                // set the highest g value to view lather the depth of the solution
                 if (new_g_cost > highest_g)
                     highest_g = new_g_cost;
+
+                // check if the neighbor is in the open list
                 int open_list_idx = findPuzzle(graph, idx_neighboor, open_list);
 
-                // if (new_g_cost < graph.nodes[idx_neighboor].g_weight || open_list_idx == -1)
-                // {
-                //     graph.nodes[idx_neighboor].g_weight = new_g_cost;
-                //     graph.nodes[idx_neighboor].calculate_h_weight(weights);
-                //     graph.nodes[idx_neighboor].parent_index = cur_idx_node;
-
-                //     if (open_list_idx == -1)
-                //     {
-                //         open_list.push_back(idx_neighboor);
-                //     }
-                // }
-
+                // if the neighbor is not in the open list:
                 if (open_list_idx == -1)
                 {
+                    //  compute its g, h, f values and set the parent as the current node
                     graph.nodes[idx_neighboor].g_weight = new_g_cost;
-                    graph.nodes[idx_neighboor].calculate_h_weight(weights,goal);
+                    graph.nodes[idx_neighboor].calculate_h_weight(weights, goal);
                     graph.nodes[idx_neighboor].parent_index = cur_idx_node;
 
+                    //  add it to the open list
                     open_list.push_back(idx_neighboor);
                 }
                 else if (new_g_cost < graph.nodes[open_list_idx].g_weight)
                 {
+                    //  if this new path is shorter than the one previously recorded for this neighbor,
+                    //  change the parent of the neighbor to the current node,
+                    //  and recalculate the g value
                     graph.nodes[open_list_idx].g_weight = new_g_cost;
                     graph.nodes[open_list_idx].parent_index = cur_idx_node;
                 }
@@ -146,40 +141,38 @@ vector<int> get_neighbours(Node node)
 
         if (node.puzzle[i] == 0)
         {
-            // POSIÇÃO DO ZERO É O PRIMEIRO VALOR DENTRO DO VETOR
+            // ZERO POSITION IS THE FIRST VALUE WITHIN THE VECTOR
             neighbours.push_back(i);
             int row_size = sqrt(node.puzzle.size());
 
-            // CALCULA OS INDICES 2D DO PUZZLE BASEADO
-            // NO INDICE 1D
+            // CALCULATES THE PUZZLE'S 2D INDEXES BASED ON THE 1D INDEX
             std::pair<int, int> xy = calculate_indices_2d_to_1d(i, node.puzzle.size());
             int x = xy.first;
             int y = xy.second;
 
-            // CHECA SE EXISTE UMA PEÇA A ESQUERDA DO ZERO (para esquerda X diminui)
+            // CHECK IF THERE IS A PIECE TO THE LEFT OF ZERO (to the left X decreases)
             if ((x - 1) >= 0)
             {
-                // CALCULA INDICE 1D DO VETOR DE PUZZLE BASEADO NOS
-                // INDICES 2D
+                // CALCULATES 1D INDEX OF THE PUZZLE VECTOR BASED ON 2D INDICES
                 int new_idx = (x - 1) + y * row_size;
                 neighbours.push_back(new_idx);
             }
 
-            // CHECA SE EXISTE UMA PEÇA ACIMA DO ZERO (para cima Y diminui)
+            // CHECK IF THERE IS A PART ABOVE ZERO (up Y decreases)
             if ((y - 1) >= 0)
             {
                 int new_idx = x + (y - 1) * row_size;
                 neighbours.push_back(new_idx);
             }
 
-            // CHECA SE EXISTE UMA PEÇA ABAIXO DO ZERO (para baixo Y aumenta)
+            // CHECK IF THERE IS A PART BELOW ZERO (downwards Y increases)
             if ((y + 1) < row_size)
             {
                 int new_idx = x + (y + 1) * row_size;
                 neighbours.push_back(new_idx);
             }
 
-            // CHECA SE EXISTE UMA PEÇA A DIREITA DO ZERO (para direita X aumenta)
+            // CHECK IF THERE IS A PIECE TO THE RIGHT OF ZERO (to the right X increases)
             if ((x + 1) < row_size)
             {
                 int new_idx = (x + 1) + y * row_size;
@@ -199,14 +192,9 @@ vector<Node> get_successor(Node node)
 
     vector<int> neighbours = get_neighbours(node);
 
-    // for (int i = 0; i < neighbours.size(); i++)
-    // {
-    //     cout << neighbours[i] << " ";
-    // }
-
     int zero_pos = neighbours[0];
-    // COMEÇA EM 1 POR QUÊ NO ÍNDICE 0 ESTÁ A POSIÇÃO
-    // DO ZERO NO PUZZLE
+    
+    // STARTS AT 1 BECAUSE INDEX 0 IS THE POSITION OF ZERO IN THE PUZZLE
     for (int i = 1; i < neighbours.size(); i++)
     {
         Node new_node;
@@ -215,8 +203,7 @@ vector<Node> get_successor(Node node)
         new_node.puzzle[zero_pos] = new_node.puzzle[neighbours[i]];
         new_node.puzzle[neighbours[i]] = 0;
 
-        // new_node.print_puzzle();
-        // cout << "\n";
+        // new_node.print_puzzle() << endl;
         successors.push_back(new_node);
     }
     return successors;
