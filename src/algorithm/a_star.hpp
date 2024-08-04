@@ -12,21 +12,7 @@
  */
 int a_star_algorithm(Graph &g, vector<int> goal, vector<vector<int>> weights);
 
-/**
- * Retrieves the index of the numbers that are neighbors of the empty position.
- * Basically checks the movement possibilities of the current state.
- *  @param node node that will be looked at.
- *  @return vector with the index of the numbers that are neighbors of the empty position.
- */
-vector<int> get_neighbours(Node node);
 
-/**
- * Retrieves the neighbors of the current node.
- * Basically returns all possible new states of the puzzle.
- *  @param node node that will be looked at.
- *  @return vector of neighboring nodes of the current node.
- */
-vector<Node> get_successor(Node node);
 
 /**
  * Seach for a puzzle in a list.

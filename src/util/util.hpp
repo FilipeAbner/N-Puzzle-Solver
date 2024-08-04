@@ -24,9 +24,6 @@ vector<vector<int>> pre_computate_weight(int size, vector<int> &goal);
  */
 bool check_solvable(vector<int> &initial_state, vector<int> &goal_state);
 
-
-
-
 /**
  * Show matriz of all possible weight for every possible movement in puzzle using manhatan distance
  *  @param puzzle_weights matrix weight

@@ -16,7 +16,8 @@ SRC = $(SRCDIR)/main.cpp \
       $(ALGORITHMDIR)/heuristic.cpp \
       $(GRAPHDIR)/graph.cpp \
       $(GRAPHDIR)/node.cpp \
-      $(UTILDIR)/util.cpp
+      $(UTILDIR)/util.cpp \
+      $(ALGORITHMDIR)/sucessors.cpp
 
 # Arquivos Objeto
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
