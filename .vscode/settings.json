@@ -1,9 +1,9 @@
 {
   "files.associations": {
+    "*.rmd": "markdown",
     "*.cpp": "cpp",
     "stdlib.h": "c",
     "string.h": "c",
-    "*.rmd": "markdown",
     "vector": "cpp",
     "xutility": "cpp",
     "iostream": "cpp",
@@ -65,6 +65,9 @@
     "xlocmes": "cpp",
     "xlocmon": "cpp",
     "xloctime": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "mutex": "cpp",
+    "stop_token": "cpp",
+    "thread": "cpp"
   }
 }

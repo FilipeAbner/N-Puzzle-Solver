@@ -1,8 +1,9 @@
-#include "algorithm.hpp"
+#include "algorithm/a_star.hpp"
 #include <limits.h>
-#include "util.hpp"
+#include "util/util.hpp"
 #include <iostream>
 #include <algorithm>
+#include "algorithm/heuristic.hpp"
 
 using namespace std;
 

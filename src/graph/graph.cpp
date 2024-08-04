@@ -1,4 +1,4 @@
-#include "graph.hpp"
+#include "graph/graph.hpp"
 #include <iostream>
 
 Graph::Graph(int _puzzle_size)

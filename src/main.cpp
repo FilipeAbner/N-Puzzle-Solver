@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "graph.hpp"
-#include "algorithm.hpp"
-#include "util.hpp"
+#include "graph/graph.hpp"
+#include "algorithm/a_star.hpp"
+#include "util/util.hpp"
 #include <chrono>
 
 using namespace std;
@@ -33,13 +33,12 @@ int main()
     //   goal.push_back(i);
     // }
 
-    goal = {1, 2, 3, 4, 5, 6, 7, 8, 0};
-    // goal = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    // goal = {1, 2, 3, 4, 5, 6, 7, 8, 0};
+    goal = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
     vector<vector<int>> weights = pre_computate_weight(puzzleSize, goal);
     // print_pre_computate_weight(weights);
     Graph g(puzzleSize);
-    // return 0;
 
     Node node;
     node.puzzle = puzzle;

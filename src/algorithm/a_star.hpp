@@ -1,6 +1,6 @@
 #pragma once
 #define ALGORITHM_HPP
-#include "graph.hpp"
+#include "graph/graph.hpp"
 
 
 /**
