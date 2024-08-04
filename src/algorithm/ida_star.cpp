@@ -14,16 +14,15 @@ int ida_star(Graph &graph, vector<vector<int>> &weights, vector<int> &goal)
     graph.nodes[0].calculate_h_weight(weights, goal);
     int bound = graph.get_node(0).f_weight();
 
-
     while (true)
     {
-        vector<int> path;
-        path.push_back(0);
+        vector<Node> path;
+        path.push_back(graph.nodes[0]);
 
         int t = search(graph, path, 0, bound, weights, goal);
         if (t == -1)
         {
-            return path.back();
+            return path.back().index_in_graph;
         }
 
         if (t == INT_MAX)
@@ -35,38 +34,57 @@ int ida_star(Graph &graph, vector<vector<int>> &weights, vector<int> &goal)
     }
 }
 
-int search(Graph &graph, vector<int> &path, int g, int bound, vector<vector<int>> &weights, vector<int> &goal)
+int search(Graph &graph, vector<Node> &path, int g, int bound, vector<vector<int>> &weights, vector<int> &goal)
 {
-    int node_idx = path.back();
-    graph.nodes[node_idx].g_weight = g;
-    graph.nodes[node_idx].calculate_h_weight(weights, goal);
 
-    // cout << "Node_idx: " << node_idx << "\n";
+    Node node = path.back();
+    int node_idx = node.index_in_graph;
 
-    if (graph.get_node(node_idx).f_weight() > bound)
+    node.g_weight = g;
+    node.calculate_h_weight(weights, goal);
+
+    if (node.f_weight() > bound)
     {
-        return graph.get_node(node_idx).f_weight();
+        return node.f_weight();
     }
 
     // if the node is the goal node
-    if (graph.get_node(node_idx).h_weight == 0)
+    if (node.h_weight == 0)
     {
-        cout << path.size() << "\n";
+        // Começa em 1 por quê na posição 0 está o 
+        // estado inicial que já está no grafo
+        for (int i = 1; i < path.size(); i++)
+        {
+            graph.add_node(path[i]);
+            graph.neighboors[path[i].parent_index].push_back(path[i].index_in_graph);     
+        }
+
         return -1;
     }
 
     int min = INT_MAX;
 
-    vector<Node> successors = get_successor(graph.nodes[node_idx]);
+    vector<Node> successors = get_successor(node);
 
-    set_sucessors(graph, successors, node_idx);
 
-    for (int &idx_neighboor : graph.neighboors[node_idx])
+    for (Node &successor : successors)
     {
-        if (find_puzzle(graph, idx_neighboor, path) == -1)
+        bool is_in_path = false;
+
+        for (auto path_node : path)
         {
-            graph.nodes[idx_neighboor].parent_index = node_idx;
-            path.push_back(idx_neighboor);
+            if (path_node.puzzle == successor.puzzle)
+            {
+                is_in_path = true;
+                break;
+            }
+        }
+
+        if (!is_in_path)
+        {
+            successor.parent_index = node_idx;
+            successor.index_in_graph = node_idx + 1;
+            path.push_back(successor);
             int t = search(graph, path, g + 1, bound, weights, goal);
 
             if (t == -1)
