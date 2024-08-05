@@ -24,7 +24,7 @@ SRC = $(SRCDIR)/main.cpp \
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
 
 # Executável
-EXEC = my_program
+EXEC = n_puzzle_solver
 
 # Regras
 all: $(EXEC)
