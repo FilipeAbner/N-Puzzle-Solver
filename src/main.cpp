@@ -45,8 +45,11 @@ int main()
   //   goal.push_back(i);
   // }
 
-  goal = {1, 2, 3, 4, 5, 6, 7, 8, 0};
-  // goal = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+  // goal = {1, 2, 3, 4, 5, 6, 7, 8, 0};
+  goal = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+
+  // goal = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12 ,13, 14, 15, 0};
+  // goal = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
   vector<vector<int>> weights = pre_computate_weight(puzzleSize, goal);
   // print_pre_computate_weight(weights);
@@ -55,11 +58,11 @@ int main()
   Node node;
   node.puzzle = puzzle;
 
-  if (!check_solvable(node.puzzle, goal))
-  {
-    cout << "Puzzle not solvable!\n";
-    return 0;
-  }
+  // if (!check_solvable(node.puzzle, goal))
+  // {
+  //   cout << "Puzzle not solvable!\n";
+  //   return 0;
+  // }
 
   node.g_weight = 0;
 

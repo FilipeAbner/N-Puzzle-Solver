@@ -9,10 +9,14 @@
 
 using namespace std;
 
+int count_nodes = 0;
+int count_iteractions = 0;
+
 int ida_star(Graph &graph, vector<vector<int>> &weights, vector<int> &goal)
 {
     graph.nodes[0].calculate_h_weight(weights, goal);
     int bound = graph.get_node(0).f_weight();
+    count_nodes++;
 
     while (true)
     {
@@ -36,6 +40,7 @@ int ida_star(Graph &graph, vector<vector<int>> &weights, vector<int> &goal)
 
 int search(Graph &graph, vector<Node> &path, int g, int bound, vector<vector<int>> &weights, vector<int> &goal)
 {
+    count_iteractions++;
 
     Node node = path.back();
     int node_idx = node.index_in_graph;
@@ -51,6 +56,8 @@ int search(Graph &graph, vector<Node> &path, int g, int bound, vector<vector<int
     // if the node is the goal node
     if (node.h_weight == 0)
     {
+        cout << "IDA Total nodes: " << count_nodes << endl;
+        cout << "IDA Total iteractions: " << count_iteractions << endl;
         // Começa em 1 por quê na posição 0 está o 
         // estado inicial que já está no grafo
         for (int i = 1; i < path.size(); i++)
@@ -69,6 +76,7 @@ int search(Graph &graph, vector<Node> &path, int g, int bound, vector<vector<int
 
     for (Node &successor : successors)
     {
+        count_nodes++;
         bool is_in_path = false;
 
         for (auto path_node : path)
