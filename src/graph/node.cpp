@@ -54,3 +54,12 @@ void Node::print_puzzle()
     }
     cout << "\n";
 }
+
+void Node::set_root_node(vector<int> _puzzle)
+{
+    puzzle = _puzzle;
+    index_in_graph = 0;
+    parent_index = -1;
+    g_weight = 0;
+    h_weight = 0;
+}

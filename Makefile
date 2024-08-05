@@ -1,6 +1,6 @@
 # Variáveis
 CXX = g++
-CXXFLAGS = -std=c++17 -I./src -I./src/algorithm -I./src/graph -I./src/util
+CXXFLAGS = -std=c++17 -I./src -I./src/algorithm -I./src/graph -I./src/util -I./src/interface -g
 LDFLAGS = -std=c++17
 BUILD_DIR = build
 
@@ -9,6 +9,7 @@ SRCDIR = src
 ALGORITHMDIR = $(SRCDIR)/algorithm
 GRAPHDIR = $(SRCDIR)/graph
 UTILDIR = $(SRCDIR)/util
+INTERFACEDIR = $(SRCDIR)/interface
 
 # Arquivos Fonte
 SRC = $(SRCDIR)/main.cpp \
@@ -18,8 +19,10 @@ SRC = $(SRCDIR)/main.cpp \
       $(GRAPHDIR)/node.cpp \
       $(UTILDIR)/util.cpp \
       $(ALGORITHMDIR)/sucessors.cpp \
-      $(ALGORITHMDIR)/ida_star.cpp
-
+      $(ALGORITHMDIR)/ida_star.cpp \
+      $(INTERFACEDIR)/main_menu.cpp \
+      $(INTERFACEDIR)/puzzle_state_menu.cpp \
+      $(INTERFACEDIR)/algorithm_mode_menu.cpp 
 # Arquivos Objeto
 OBJ = $(SRC:%.cpp=$(BUILD_DIR)/%.o)
 

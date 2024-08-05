@@ -1,8 +1,14 @@
 #pragma once
-#define ALGORITHM_HPP
+#define A_STAR_HPP
 #include "graph/graph.hpp"
 
 using namespace std;
+
+
+extern long count_open_list;
+extern long count_closed_list;
+extern long count_interactions_a_star;
+
 
 /**
  *  Algorithm a* to search.

@@ -48,5 +48,7 @@ struct Graph
      */
     void print_graph();
 
+    Graph() {}
+
     ~Graph() {}
 };

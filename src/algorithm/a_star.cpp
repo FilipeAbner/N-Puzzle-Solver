@@ -8,12 +8,24 @@
 
 using namespace std;
 
+long count_open_list = 0;
+long count_closed_list = 0;
+long count_interactions_a_star = 0;
+
+// int count_open_list = 0;
+// int count_closed_list = 0;
+// int count_interactions_a_star = 0;
+
 int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights)
 {
+    count_open_list = 0;
+    count_closed_list = 0;
+    count_interactions_a_star = 0;
+
     vector<int> open_list;
     vector<int> closed_list;
-    int g; // g is movement cost to move from the starting point to a given square on the grid
-    int h; // h is the estimated movement cost to move from that given square on the grid to the final destination
+    int g; 
+    int h;
     // Ao invéz de adicionar o Nodo adicionamos o Indice dele,
     // permitindo acessar o nodo a qualquer momento e calcular seus vizinhos
     open_list.push_back(0);
@@ -26,15 +38,15 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
     //  while (the destination node has not been reached):
     while (true)
     {
-        count++;
+        count_interactions_a_star++;
 
-        if (count >= iteration_limit)
-        {
-            cout << "limit reached\n";
-            cout << "nodes: " << graph.nodes.size() << "\n";
-            cout << "depth: " << highest_g << "\n";
-            return 0;
-        }
+        // if (count >= iteration_limit)
+        // {
+        //     cout << "limit reached\n";
+        //     cout << "nodes: " << graph.nodes.size() << "\n";
+        //     cout << "depth: " << highest_g << "\n";
+        //     return 0;
+        // }
         // if (open_list.size() % 1000 == 0)
         // {
         //     cout << "open list size:" << open_list.size() << endl;
@@ -70,8 +82,8 @@ int a_star_algorithm(Graph &graph, vector<int> goal, vector<vector<int>> weights
         //  if (this node is our destination node) : //TODO: trocar a comparaçao do goal para h = 0?
         if (graph.get_node(cur_idx_node).puzzle == goal)
         {
-            cout << "Open list: " << open_list.size() << "\n";
-            cout << "Closed list: " << closed_list.size() << "\n";
+            count_open_list = open_list.size();
+            count_closed_list = closed_list.size();
             //  we are finished
             return cur_idx_node;
             //  if not:

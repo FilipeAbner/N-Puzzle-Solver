@@ -4,6 +4,10 @@
 
 using namespace std;
 
+extern long count_interactions_ida_star;
+extern long count_nodes_ida_star;
+
+
 /**
  *  
  *  @param graph graph with all puzzles.
@@ -11,7 +15,7 @@ using namespace std;
  *  @param goal objective vector.
  *  @return index of the final node (result).
  */
-int ida_star(Graph &graph, vector<vector<int>> &weights, vector<int> &goal);
+int ida_star(Graph &graph,  vector<int> &goal,vector<vector<int>> &weights);
 
 /**
  *  

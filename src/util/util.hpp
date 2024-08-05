@@ -38,3 +38,8 @@ void print_pre_computate_weight(vector<vector<int>> &puzzle_weights);
  *  @return if find the puzzle in list return index of puzzle in graph else return -1.
  */
 int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list);
+
+
+int show_solution(int idx_last_puzzle, Graph &g, bool burst);
+
+long get_mem_usage();

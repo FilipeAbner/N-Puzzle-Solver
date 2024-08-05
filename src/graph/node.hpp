@@ -60,4 +60,12 @@ struct Node
      * @return int f_weight.
      */
     int f_weight() { return g_weight + h_weight; }
+
+    void set_root_node(vector<int> _puzzle);
+    // {
+    //     puzzle = _puzzle;
+    //     index_in_graph = 0;
+    //     parent_index = -1;
+    //     g_weight = 0;
+    // }
 };

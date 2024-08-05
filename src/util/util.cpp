@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <utility>
+#include <sys/resource.h>
 
 using namespace std;
 
@@ -69,4 +70,50 @@ int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list)
     }
 
     return -1;
+}
+
+int show_solution(int idx_last_puzzle, Graph &g, bool burst){
+
+  vector<Node> solution;
+  Node node_solution = g.get_node(idx_last_puzzle);
+  solution.push_back(node_solution);
+
+  int count = 0;
+  while (true)
+  {
+    if (node_solution.parent_index == -1)
+    {
+      break;
+    }
+    solution.push_back(g.get_node(node_solution.parent_index));
+    node_solution = g.get_node(node_solution.parent_index);
+    count++;
+  }
+  int total_steps = count;
+
+  if(burst){
+    for (int i = solution.size() - 1; i >= 0; i--)
+    {
+      solution[i].print_puzzle();
+    }
+  
+  }else{
+    char key;
+    while(cin >> key && count >= 0)
+    {
+       solution[count].print_puzzle();
+       count--;
+    }
+
+  }
+
+  return total_steps;
+}
+
+long get_mem_usage()
+{
+  struct rusage usage;
+  int ret;
+  ret = getrusage(RUSAGE_SELF, &usage);
+  return usage.ru_maxrss; // in KB
 }
