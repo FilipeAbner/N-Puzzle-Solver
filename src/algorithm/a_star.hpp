@@ -5,9 +5,9 @@
 using namespace std;
 
 
-extern long count_open_list;
-extern long count_closed_list;
-extern long count_interactions_a_star;
+extern int count_open_list;
+extern int count_closed_list;
+extern int count_interactions_a_star;
 
 
 /**

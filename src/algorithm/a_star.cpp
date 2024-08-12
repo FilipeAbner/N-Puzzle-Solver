@@ -8,9 +8,9 @@
 
 using namespace std;
 
-long count_open_list = 0;
-long count_closed_list = 0;
-long count_interactions_a_star = 0;
+int count_open_list = 0;
+int count_closed_list = 0;
+int count_interactions_a_star = 0;
 
 // int count_open_list = 0;
 // int count_closed_list = 0;

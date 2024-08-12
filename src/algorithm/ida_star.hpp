@@ -4,8 +4,8 @@
 
 using namespace std;
 
-extern long count_interactions_ida_star;
-extern long count_nodes_ida_star;
+extern int count_interactions_ida_star;
+extern int count_nodes_ida_star;
 
 
 /**
