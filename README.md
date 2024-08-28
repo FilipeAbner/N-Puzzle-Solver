@@ -31,6 +31,39 @@ make
 
 4. Follow the instructions on screen.
 
+ <div align="center">
+
+`
+OR Execute with a file containing the puzzle configuration:
+`
+
+
+</div>
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/FilipeAbner/N-Puzzle-Solver.git
+```
+2. Change branch to `unique_tests`:
+
+```bash
+git checkout unique_tests
+```
+3. Use Makefile to compile the source code:
+
+```bash
+make
+```
+4. Run the executable with the following command:
+
+```bash
+./n_puzzle_solver < file.txt
+```
+- By default, the program will run the IDA* algorithm. To run the A* algorithm, use the `-i` flag:
+- By defalut goal state is `0 1 2 3 4 5 6 7 8`. To change the goal state, use the `-g` flag:
+
+
 ### Beginners
 
 1. Download Zip file from the repository.
