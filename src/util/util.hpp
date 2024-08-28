@@ -39,7 +39,19 @@ void print_pre_computate_weight(vector<vector<int>> &puzzle_weights);
  */
 int find_puzzle(Graph &graph, int idx_neighbor, vector<int> &list);
 
-
+/**
+ * @brief 
+ * Iterate in Node solution until root node, giving the whole step for solve puzzle
+ * @param idx_last_puzzle Node solution index
+ * @param g graph with all puzzles
+ * @param burst if true show all results in cascade otherwise need user input to show steps
+ * @return int total_steps for solution
+ */
 int show_solution(int idx_last_puzzle, Graph &g, bool burst);
 
+/**
+ * @brief 
+ * Get the memory usage ( Due to System properties mem usage is calculated by program memory so only the first execution will show correctly mem usage, others will display 0)
+ * @return long memory usage in Kb
+ */
 long get_mem_usage();

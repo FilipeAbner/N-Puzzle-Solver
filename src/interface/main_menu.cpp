@@ -28,21 +28,21 @@ void menu()
     vector<int> goal;
     vector<vector<int>> weights;
     Graph g;
-    bool stats = false;
+    bool stats = true;
     char *stats_str = (char*) malloc(9 * sizeof(char));
     
     if (stats_str == nullptr) {
         std::cerr << "Erro ao alocar memória." << std::endl;
         return;
     }
-    strcpy(stats_str, "Disabled");
+    strcpy(stats_str, "Enabled");
 
     while(option != 8)
     {
         Node node;
         std::cout << "Choose an Option: "<< std::endl;
-        std::cout << "1. Edit Goal " << std::endl;
-        std::cout << "2. Edit Puzzle " << std::endl;
+        std::cout << "1. Edit Puzzle " << std::endl;
+        std::cout << "2. Edit Goal " << std::endl;
         std::cout << "3. Execute A* Single Step " << std::endl;
         std::cout << "4. Execute A* Burst Mode " << std::endl;
         std::cout << "5. Execute IDA* Single Step " << std::endl;
@@ -64,21 +64,6 @@ void menu()
         {
         case 1:
 
-            goal = init_puzzle_edit();  
-            if(goal.size() != 0){
-                if(puzzle.size() != 0)
-                    if(!check_solvable(puzzle, goal))
-                    {
-                        cout << "Puzzle not solvable! Change Puzzle or Goal\n";
-                        goal.clear();
-                    }
-            }
-            
-            weights = pre_computate_weight(goal.size(), goal);
-            break;
-
-        case 2:
-
             puzzle = init_puzzle_edit();
             if(puzzle.size() != 0)
             {
@@ -89,13 +74,29 @@ void menu()
                 if(goal.size() != 0){
                     if(!check_solvable(node.puzzle, goal))
                     {
-                        cout << "Puzzle not solvable! Change Puzzle or Goal\n";
+                        cout << "\nPUZZLE NOT SOLVABLE! CHANGE PUZZLE OR GOAL\n";
                         puzzle.clear();
                     }
                 }
             }
             weights = pre_computate_weight(goal.size(), goal);
             break;
+
+        case 2:
+
+            goal = init_puzzle_edit();  
+            if(goal.size() != 0){
+                if(puzzle.size() != 0)
+                    if(!check_solvable(puzzle, goal))
+                    {
+                        cout << "\nPUZZLE NOT SOLVABLE! CHANGE PUZZLE OR GOAL\n";
+                        goal.clear();
+                    }
+            }
+            
+            weights = pre_computate_weight(goal.size(), goal);
+            break;
+
 
         case 3:
 
@@ -163,4 +164,5 @@ void menu()
 
         }
     }
+    free(stats_str);
 }
