@@ -9,11 +9,9 @@
 
 using namespace std;
 
-long count_interactions_ida_star = 0;
-long count_nodes_ida_star = 0;
 
-// int count_interactions_ida_star = 0;
-// int count_nodes_ida_star = 0;
+int count_interactions_ida_star = 0;
+int count_nodes_ida_star = 0;
 
 int ida_star(Graph &graph, vector<int> &goal,vector<vector<int>> &weights)
 {
