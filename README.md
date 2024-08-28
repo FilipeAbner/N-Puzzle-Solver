@@ -8,6 +8,64 @@
 
 - The A* algorithm is not recommended for puzzles with size greater than 8, as the number of states to explore grows exponentially with the size of the puzzle. However, you can try it with the provided code and enjoy.
 
+## How to Use
+
+### Advanced Users
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/FilipeAbner/N-Puzzle-Solver.git
+```
+
+2. Use Makefile to compile the source code:
+
+```bash
+make
+```
+3. Run the executable with the following command:
+
+```bash
+./n_puzzle_solver
+```
+
+4. Follow the instructions on screen.
+
+### Beginners
+
+1. Download Zip file from the repository.
+2. Extract the contents to a folder.
+3. Execute the `n_puzzle_solver` executable.
+4. Follow the instructions on screen.
+
+## Results
+ - Below, we present the results of several executions that allow a detailed comparative analysis between the A* and IDA* algorithms. These results include performance metrics such as execution time, memory consumption, and maximum depth explored in different puzzle scenarios, highlighting the situations in which each algorithm excels. 
+
+ <div align="center">
+
+| **Exemple 1** | **Puzzle** | **Goal** | **Time** | **Memory** | **Nodes explored** | **Depth** |
+|---------------|------------|----------|-----------|-------------|--------------------|------------------|
+| **A\***       |  8 6 7     |  1 2 3   | 29821 ms  |  2696 Kb    | 18807              |    31            |
+| **IDA\***     |  2 5 4     |  4 5 6   | 378 ms    |   28 Kb     |    42472           |       31         |
+|               |  3 0 1     |  7 8 9   |           |             |                    |                  |
+
+
+
+| **Exemple 2** | **Puzzle** | **Goal** | **Time** | **Memory** | **Nodes explored** | **Depth** |
+|---------------|------------|----------|-----------|-------------|--------------------|------------------|
+| **A\***       |  1 4 8     |  0 1 2   | 326 ms  |  256 Kb    | 1802              |    23            |
+| **IDA\***     |  0 7 5     |  3 4 5   | 26 ms    |   28 Kb     |    3341           |       23         |
+|               |  2 6 3     |  6 7 8   |           |             |                    |                  |
+
+| **Exemple 2** | **Puzzle** | **Goal** | **Time** | **Memory** | **Nodes explored** | **Depth** |
+|---------------|------------|----------|-----------|-------------|--------------------|------------------|
+|               |  14 13 15 7  |  0 1 2 3   |       |            |               |                |
+| **IDA\***     |  11 12 9 5   |  4 5 6 7   | 7399916 ms    |   68 Kb     |    443408963           |       57         |
+|               |  6  0  2 1     |  8 9 10 11  |  2.05 hours  |             |                    |                  |
+|               |  4  8 10 3    |  12 13 14 15  |                  |
+
+</div>
+
 ## Manhattan Distance Heuristic
 
 The heuristic used is the Manhattan distance, which calculates the sum of the absolute distances of the puzzle pieces relative to their correct positions in the goal state. The formula for the Manhattan distance between a piece and its correct position is:
@@ -125,6 +183,13 @@ src/
 │   ├── graph.hpp
 │   ├── node.cpp
 │   └── node.hpp
+├── interface/
+│   ├── algorithm_mode_menu.cpp
+│   ├── algorithm_mode_menu.hpp
+│   ├── main_menu.cpp
+│   ├── main_menu.hpp
+│   ├── puzzle_state_menu.cpp
+│   ├── puzzle_state_menu.hpp
 ├── util/
 │   ├── util.cpp
 │   └── util.hpp
@@ -132,23 +197,7 @@ src/
 ```
 - All functions are documented with string docs in the header files.
 
-## How to Use
+## Contributing
 
-1. Clone the repository:
-
-```bash
-git clone 
-```
-
-2. Use Makefile to compile the source code:
-
-```bash
-make
-```
-3. Run the executable with the following command:
-
-```bash
-./n_puzzle_solver
-```
-
-4. Follow the instructions on the screen to enter the initial state of the puzzle.
+```Contributions are welcome!  ```
+- For major changes, please open an issue first to discuss what you would like to change.
