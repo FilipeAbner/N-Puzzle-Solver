@@ -201,3 +201,10 @@ src/
 
 ```Contributions are welcome!  ```
 - For major changes, please open an issue first to discuss what you would like to change.
+
+## Developers
+
+|   | Name             | Github                         | 
+| -------------------------------------------------------------------------------------------- | ---------------- | ------------------------------ |
+| <img src="https://avatars.githubusercontent.com/u/60756521"  width="100px" heigth="100px" /> | Filipe Abner     | https://github.com/FilipeAbner |
+| <img src="https://avatars.githubusercontent.com/u/70250416?v=4"  width="100px" heigth="100px" /> | Lucas Freitas     | https://github.com/LucasFreitaslpf1 |
