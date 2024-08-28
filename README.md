@@ -54,8 +54,40 @@ The A* algorithm uses two data structures: an open list and a closed list. The o
 
 - The IDA* algorithm is a variant of the A* algorithm that uses iterative deepening to find the optimal solution. It is more memory-efficient and consumes less memory than A* but may take longer to find the solution.
 
-*To be completed...*
+### Algorithm Steps
 
+1. Calculate start node f weight.
+2. Set start node f weight as bound.
+3. Initialize new path list.
+4. Add start node to the path list.
+5. Call Search:
+    1. Get last node inside the path list.
+    2. Calculate node f weight.
+    3. If node f weight is greater than bound, then:
+        - Return it's f weight
+    4. If node h weight is 0 (Solution found), then:
+        - Add path list nodes to the graph and set it's neighboors
+        - Return -1
+    5. Set min as INT_MAX 
+    6. For each node's successors:
+       1. If successor is already in path, then:
+          - Skip this successor
+       2. Set node as successor's parent
+       3. Add successor to path list
+       4. Call Search recursively
+       5. If Search returns -1, then:
+          - Return -1
+       6. If Search returns value lower than min, then:
+          - Set min as Search value
+       7. Pop node off the path list
+    7. Return min
+6. If Search returns -1 (Solution found), then:
+   - Return end state node index
+7. If Search returns INT_MAX (Solution not found), then:
+   - Returns -1 (In this case, -1 means solution not found)
+8. Set bound as Search value
+9. Go back to 3.
+       
 ## Puzzle is Solvable?
 
 - It is possible to check if a puzzle is solvable through its number of inversions.
