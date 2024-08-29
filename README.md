@@ -48,7 +48,7 @@ git clone https://github.com/FilipeAbner/N-Puzzle-Solver.git
 2. Change branch to `unique_tests`:
 
 ```bash
-git checkout unique_test
+git checkout unique_tests
 ```
 3. Use Makefile to compile the source code:
 
@@ -60,20 +60,8 @@ make
 ```bash
 ./n_puzzle_solver < file.txt
 ```
-
-5. Configure the program with the following options:
-
-    *By default, the program will run the `IDA algorithm` and goal state `1 2 3 4 5 6 7 8 0`*
-- To run the A* algorithm, use the `-a` flag:
-    
-    ```bash 
-    ./n_puzzle_solver < file.txt -a
-    ```
-- To change the goal state, use the `-g` flag and pass the file with goal state as argument:
-
-    ```bash
-    ./n_puzzle_solver < file.txt -g goal.txt
-    ```
+- By default, the program will run the IDA* algorithm. To run the A* algorithm, use the `-i` flag:
+- By defalut goal state is `0 1 2 3 4 5 6 7 8`. To change the goal state, use the `-g` flag:
 
 
 ### Beginners
@@ -241,6 +229,9 @@ src/
 └── main.cpp
 ```
 - All functions are documented with string docs in the header files.
+
+## Problemns
+- Because memory analysis occurs during program execution, only the memory used for the first execution of the algorithm will be displayed. If you want to view it for another execution, you will need to run the program again.
 
 ## Contributing
 
