@@ -230,6 +230,9 @@ src/
 ```
 - All functions are documented with string docs in the header files.
 
+## Problemns
+- Because memory analysis occurs during program execution, only the memory used for the first execution of the algorithm will be displayed. If you want to view it for another execution, you will need to run the program again.
+
 ## Contributing
 
 ```Contributions are welcome!  ```
