@@ -48,7 +48,7 @@ git clone https://github.com/FilipeAbner/N-Puzzle-Solver.git
 2. Change branch to `unique_tests`:
 
 ```bash
-git checkout unique_tests
+git checkout unique_test
 ```
 3. Use Makefile to compile the source code:
 
