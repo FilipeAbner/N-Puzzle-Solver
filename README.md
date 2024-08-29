@@ -60,8 +60,20 @@ make
 ```bash
 ./n_puzzle_solver < file.txt
 ```
-- By default, the program will run the IDA* algorithm. To run the A* algorithm, use the `-i` flag:
-- By defalut goal state is `0 1 2 3 4 5 6 7 8`. To change the goal state, use the `-g` flag:
+
+5. Configure the program with the following options:
+
+    *By default, the program will run the `IDA algorithm` and goal state `1 2 3 4 5 6 7 8 0`*
+- To run the A* algorithm, use the `-a` flag:
+    
+    ```bash 
+    ./n_puzzle_solver < file.txt -a
+    ```
+- To change the goal state, use the `-g` flag and pass the file with goal state as argument:
+
+    ```bash
+    ./n_puzzle_solver < file.txt -g goal.txt
+    ```
 
 
 ### Beginners
